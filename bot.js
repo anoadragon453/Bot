@@ -54,7 +54,12 @@ const COLOR_MAPPINGS = {
 function connectSocket() {
     console.log('Connecting to SGaP headquarters...')
 
-    socket = new WebSocket('wss://sgapplace.chat.horse/api/ws');
+    try {
+        socket = new WebSocket('wss://sgapplace.chat.horse/api/ws');
+    } catch(e) {
+        console.log("Failed to connect to server. Trying again in 2 seconds...")
+        setTimeout(connectSocket, 2000);
+    };
 
     socket.onopen = function () {
         console.log('Success. Connected to David SGaP himself!')
