@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VeganPlace Bot
 // @namespace    https://github.com/Squarific/Bot
-// @version      14
+// @version      15
 // @description  The bot for vegans
 // @author       Squarific
 // @match        https://www.reddit.com/r/place/*
@@ -228,8 +228,8 @@ function place(x, y, color) {
                     'actionName': 'r/replace:set_pixel',
                     'PixelMessageData': {
                         'coordinate': {
-                            'x': x,
-                            'y': y
+                            'x': x % 1000,
+                            'y': y % 1000
                         },
                         'colorIndex': color,
                         'canvasIndex': (x > 999 ? 1 : 0)
