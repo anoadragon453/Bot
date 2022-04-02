@@ -1,15 +1,11 @@
-# PlaceNL Bot
+# Vegan Bot
 
-De bot voor PlaceNL! Deze bot verbindt met de [commando server](https://github.com/PlaceNL/Commando) en krijgt daar order van. De ordergeschiedenis kan je [hier](https://placenl.noahvdaa.me/) bekijken.
+The bot for vegans! This bot connect with [commando server](https://github.com/PlaceNL/Commando) and gets orders from there. History can be found [here](https://vegan.averysmets.com/) bekijken.
 
-## Installatieinstructies
+## Installation
 
-Voordat je begint, zorg dat je pixel wachttijd is verlopen!
+Make sure you have a pixel available otherwise it will fuck up!
 
-1. Installeer de [Tampermonkey](https://www.tampermonkey.net/) browserextensie.
-2. Klik op deze link: [https://github.com/PlaceNL/Bot/raw/master/placenlbot.user.js](https://github.com/PlaceNL/Bot/raw/master/placenlbot.user.js). Als het goed is zal Tampermonkey je moeten aanbieden om een userscript te installeren. Klik op **Install**.
-3. Herlaad je **r/place** tabblad. Als alles goed is gegaan, zie je "Accesstoken ophalen..." rechtsbovenin je scherm. De bot is nu actief, en zal je via deze meldingen rechtsbovenin je scherm op de hoogte houden van wat 'ie doet.
-
-## Nadelen van deze bot
-
-- Wanneer de bot een pixel plaatst, ziet het er voor jezelf uit alsof je nog steeds een pixel kunt plaatsen, terwijl de bot dit al voor je heeft gedaan (en je dus in de 5 minuten cooldown zit). De cooldown wordt daarom rechtsbovenin je scherm weergegeven.
+1. Install [Tampermonkey](https://www.tampermonkey.net/)
+2. Click here: [https://github.com/Squarific/Bot/raw/master/placenlbot.user.js](https://github.com/Squarific/Bot/raw/master/placenlbot.user.js). Tampermonkey should offer you to install. Click on **Install**.
+3. Reload **r/place** tab. if everything went right you will see "Accesstoken ophalen..."
