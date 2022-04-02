@@ -24,18 +24,17 @@ Make sure you have a pixel available otherwise it will fuck up!
 2. Open the browser console (F12/Inspect element -> Click on console)
 3. Paste the following code and press enter:
 
-```
+```js
 async function getAccessToken() {
-    const usingOldReddit = window.location.href.includes('new.reddit.com');
-    const url = usingOldReddit ? 'https://new.reddit.com/r/place/' : 'https://www.reddit.
- com/r/place/';
-    const response = await fetch(url);
-    const responseText = await response.text();
+	const usingOldReddit = window.location.href.includes('new.reddit.com');
+	const url = usingOldReddit ? 'https://new.reddit.com/r/place/' : 'https://www.reddit.com/r/place/';
+	const response = await fetch(url);
+	const responseText = await response.text();
 
-    return responseText.split('\"accessToken\":\"')[1].split('"')[0];
+	return responseText.split('\"accessToken\":\"')[1].split('"')[0];
 }
 
-await getAccessToken();
+await getAccessToken()
 ```
 
 4. The text between the quotes (`"`) is your access token.
