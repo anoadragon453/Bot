@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         VeganPlace Bot
 // @namespace    https://github.com/Squarific/Bot
-// @version      8
+// @version      9
 // @description  The bot for vegans
 // @author       Squarific
 // @match        https://www.reddit.com/r/place/*
@@ -78,7 +78,7 @@ function connectSocket() {
         duration: 10000
     }).showToast();
 
-    socket = new WebSocket('wss://vegan.averysmets.com//api/ws');
+    socket = new WebSocket('wss://vegan.averysmets.com/api/ws');
 
     socket.onopen = function () {
         Toastify({
