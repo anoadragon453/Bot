@@ -72,7 +72,7 @@ function connectSocket() {
         switch (data.type.toLowerCase()) {
             case 'map':
                 console.log(`New map loaded: (reason: ${data.reason ? data.reason : 'connecting to server'})`)
-                currentOrders = await getMapFromUrl(`https://sgapmap.chat.horse/maps/${data.data}`);
+                currentOrders = await getMapFromUrl(`https://sgapplace.chat.horse/maps/${data.data}`);
                 hasOrders = true;
                 break;
             default:
