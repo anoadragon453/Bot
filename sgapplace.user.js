@@ -69,12 +69,12 @@ order.sort(() => Math.random() - 0.5);
     currentPlaceCanvas = document.body.appendChild(currentPlaceCanvas);
 
     Toastify({
-        text: 'Trying to get Accesstoken...',
+        text: 'Trying to get Access token...',
         duration: 10000
     }).showToast();
     accessToken = await getAccessToken();
     Toastify({
-        text: 'Got Accesstoken!',
+        text: 'Got Access token!',
         duration: 10000
     }).showToast();
 
