@@ -1,6 +1,6 @@
 // ==UserScript==
-// @name         VeganPlace Bot
-// @namespace    https://github.com/Squarific/Bot
+// @name         SgapPlace Bot
+// @namespace    https://github.com/anoadragon453/Bot
 // @version      15
 // @description  The bot for vegans
 // @author       Squarific
@@ -9,8 +9,8 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit.com
 // @require	     https://cdn.jsdelivr.net/npm/toastify-js
 // @resource     TOASTIFY_CSS https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css
-// @updateURL    https://github.com/Squarific/Bot/raw/master/placenlbot.user.js
-// @downloadURL  https://github.com/Squarific/Bot/raw/master/placenlbot.user.js
+// @updateURL    https://github.com/anoadragon453/Bot/raw/master/sgapplace.user.js
+// @downloadURL  https://github.com/anoadragon453/Bot/raw/master/sgapplace.user.js
 // @grant        GM_getResourceText
 // @grant        GM_addStyle
 // ==/UserScript==
@@ -88,15 +88,15 @@ order.sort(() => Math.random() - 0.5);
 
 function connectSocket() {
     Toastify({
-        text: 'Connecting to PlaceVegan server...',
+        text: 'Connecting to SgapPlace server...',
         duration: 10000
     }).showToast();
 
-    socket = new WebSocket('wss://vegan.averysmets.com/api/ws');
+    socket = new WebSocket('wss://sgapplace.chat.horse/api/ws');
 
     socket.onopen = function () {
         Toastify({
-            text: 'Connected to PlaceVegan server!',
+            text: 'Connected to SgapPlace server!',
             duration: 10000
         }).showToast();
         socket.send(JSON.stringify({ type: 'getmap' }));
@@ -116,7 +116,7 @@ function connectSocket() {
                     text: `Loading new map (reason: ${data.reason ? data.reason : 'connected with server'})`,
                     duration: 10000
                 }).showToast();
-                currentOrderCtx = await getCanvasFromUrl(`https://vegan.averysmets.com/maps/${data.data}`, currentOrderCanvas);
+                currentOrderCtx = await getCanvasFromUrl(`https://sgapplace.chat.horse/maps/${data.data}`, currentOrderCanvas);
                 hasOrders = true;
                 break;
             default:
