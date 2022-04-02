@@ -71,7 +71,7 @@ function connectSocket() {
 
         switch (data.type.toLowerCase()) {
             case 'map':
-                console.log(`Nieuwe map geladen (reden: ${data.reason ? data.reason : 'connecting to server'})`)
+                console.log(`New map loaded: (reason: ${data.reason ? data.reason : 'connecting to server'})`)
                 currentOrders = await getMapFromUrl(`https://sgapmap.chat.horse/maps/${data.data}`);
                 hasOrders = true;
                 break;
@@ -81,7 +81,7 @@ function connectSocket() {
     };
 
     socket.onclose = function (e) {
-        console.warn(`PlaceNL server heeft de verbinding verbroken: ${e.reason}`)
+        console.warn(`Disconnected from server: ${e.reason}`)
         console.error('Socketfout: ', e.reason);
         socket.close();
         setTimeout(connectSocket, 1000);
@@ -236,7 +236,7 @@ function getMapFromUrl(url) {
     return new Promise((resolve, reject) => {
         getPixels(url, function(err, pixels) {
             if(err) {
-                console.log("Bad image path")
+                console.log(`Bad image path: ${url}`)
                 reject()
                 return
             }
