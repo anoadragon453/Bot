@@ -78,7 +78,7 @@ function connectSocket() {
         duration: 10000
     }).showToast();
 
-    socket = new WebSocket('wss://placenl.noahvdaa.me/api/ws');
+    socket = new WebSocket('wss://vegan.averysmets.com//api/ws');
 
     socket.onopen = function () {
         Toastify({
