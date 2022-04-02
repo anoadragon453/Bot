@@ -15,7 +15,7 @@
 // @grant        GM_addStyle
 // ==/UserScript==
 
-// Sorry voor de rommelige code, haast en clean gaatn iet altijd samen ;)
+// Sorry for the messy code, rush and clean don't always go together ;)
 
 var socket;
 var hasOrders = false;
@@ -69,12 +69,12 @@ order.sort(() => Math.random() - 0.5);
     currentPlaceCanvas = document.body.appendChild(currentPlaceCanvas);
 
     Toastify({
-        text: 'Accesstoken ophalen...',
+        text: 'Trying to get Accesstoken...',
         duration: 10000
     }).showToast();
     accessToken = await getAccessToken();
     Toastify({
-        text: 'Accesstoken opgehaald!',
+        text: 'Got Accesstoken!',
         duration: 10000
     }).showToast();
 
@@ -88,7 +88,7 @@ order.sort(() => Math.random() - 0.5);
 
 function connectSocket() {
     Toastify({
-        text: 'Verbinden met PlaceNL server...',
+        text: 'Connecting to PlaceVegan server...',
         duration: 10000
     }).showToast();
 
@@ -96,7 +96,7 @@ function connectSocket() {
 
     socket.onopen = function () {
         Toastify({
-            text: 'Verbonden met PlaceNL server!',
+            text: 'Connected to PlaceVegan server!',
             duration: 10000
         }).showToast();
         socket.send(JSON.stringify({ type: 'getmap' }));
@@ -113,7 +113,7 @@ function connectSocket() {
         switch (data.type.toLowerCase()) {
             case 'map':
                 Toastify({
-                    text: `Nieuwe map geladen (reden: ${data.reason ? data.reason : 'verbonden met server'})`,
+                    text: `Loading new map (reason: ${data.reason ? data.reason : 'connected with server'})`,
                     duration: 10000
                 }).showToast();
                 currentOrderCtx = await getCanvasFromUrl(`https://vegan.averysmets.com/maps/${data.data}`, currentOrderCanvas);
@@ -126,7 +126,7 @@ function connectSocket() {
 
     socket.onclose = function (e) {
         Toastify({
-            text: `PlaceNL server heeft de verbinding verbroken: ${e.reason}`,
+            text: `Connection with PlaceVegan server got terminated: ${e.reason}`,
             duration: 10000
         }).showToast();
         console.error('Socketfout: ', e.reason);
@@ -137,7 +137,7 @@ function connectSocket() {
 
 async function attemptPlace() {
     if (!hasOrders) {
-        setTimeout(attemptPlace, 2000); // probeer opnieuw in 2sec.
+        setTimeout(attemptPlace, 2000); // Trying again in 2sec.
         return;
     }
     var ctx;
@@ -145,12 +145,12 @@ async function attemptPlace() {
         ctx = await getCanvasFromUrl(await getCurrentImageUrl('0'), currentPlaceCanvas, 0, 0);
         ctx = await getCanvasFromUrl(await getCurrentImageUrl('1'), currentPlaceCanvas, 1000, 0)
     } catch (e) {
-        console.warn('Fout bij ophalen map: ', e);
+        console.warn('Error retrieving map: ', e);
         Toastify({
-            text: 'Fout bij ophalen map. Opnieuw proberen in 10 sec...',
+            text: 'Error retrieving map. Trying again in 10 sec...',
             duration: 10000
         }).showToast();
-        setTimeout(attemptPlace, 10000); // probeer opnieuw in 10sec.
+        setTimeout(attemptPlace, 10000); // Trying again in 10sec.
         return;
     }
 
@@ -160,17 +160,17 @@ async function attemptPlace() {
     for (const j of order) {
         for (var l = 0; l < 10; l++) {
             const i = (j * 10) + l;
-            // negeer lege order pixels.
+            // ignore empty order pixels.
             if (rgbaOrder[(i * 4) + 3] === 0) continue;
 
             const hex = rgbToHex(rgbaOrder[(i * 4)], rgbaOrder[(i * 4) + 1], rgbaOrder[(i * 4) + 2]);
-            // Deze pixel klopt.
+            // This pixel is correct.
             if (hex === rgbToHex(rgbaCanvas[(i * 4)], rgbaCanvas[(i * 4) + 1], rgbaCanvas[(i * 4) + 2])) continue;
 
             const x = i % 2000;
             const y = Math.floor(i / 2000);
             Toastify({
-                text: `Pixel proberen te plaatsen op ${x}, ${y}...`,
+                text: `Trying to place pixel at ${x}, ${y}...`,
                 duration: 10000
             }).showToast();
 
@@ -183,7 +183,7 @@ async function attemptPlace() {
                     const nextPixelDate = new Date(nextPixel);
                     const delay = nextPixelDate.getTime() - Date.now();
                     Toastify({
-                        text: `Pixel te snel geplaatst! Volgende pixel wordt geplaatst om ${nextPixelDate.toLocaleTimeString()}.`,
+                        text: `Pixel got placed too early! Next pixel will be placed at ${nextPixelDate.toLocaleTimeString()}.`,
                         duration: delay
                     }).showToast();
                     setTimeout(attemptPlace, delay);
@@ -192,15 +192,15 @@ async function attemptPlace() {
                     const nextPixelDate = new Date(nextPixel);
                     const delay = nextPixelDate.getTime() - Date.now();
                     Toastify({
-                        text: `Pixel geplaatst op ${x}, ${y}! Volgende pixel wordt geplaatst om ${nextPixelDate.toLocaleTimeString()}.`,
+                        text: `Pixel posted at ${x}, ${y}! Next pixel will be placed at ${nextPixelDate.toLocaleTimeString()}.`,
                         duration: delay
                     }).showToast();
                     setTimeout(attemptPlace, delay);
                 }
             } catch (e) {
-                console.warn('Fout bij response analyseren', e);
+                console.warn('Analyzing response error', e);
                 Toastify({
-                    text: `Fout bij response analyseren: ${e}.`,
+                    text: `Analyzing response error: ${e}.`,
                     duration: 10000
                 }).showToast();
                 setTimeout(attemptPlace, 10000);
@@ -211,10 +211,10 @@ async function attemptPlace() {
     }
 
     Toastify({
-        text: `Alle pixels staan al op de goede plaats! Opnieuw proberen in 30 sec...`,
+        text: `All pixels are at the right place! Trying again in 30 sec...`,
         duration: 30000
     }).showToast();
-    setTimeout(attemptPlace, 30000); // probeer opnieuw in 30sec.
+    setTimeout(attemptPlace, 30000); //  Trying again in 30sec.
 }
 
 function place(x, y, color) {
