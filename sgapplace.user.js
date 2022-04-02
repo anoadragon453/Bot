@@ -2,7 +2,7 @@
 // @name         SgapPlace Bot
 // @namespace    https://github.com/anoadragon453/Bot
 // @version      15
-// @description  The bot for vegans
+// @description  The bot for sgappers
 // @author       Squarific
 // @match        https://www.reddit.com/r/place/*
 // @match        https://new.reddit.com/r/place/*
@@ -126,7 +126,7 @@ function connectSocket() {
 
     socket.onclose = function (e) {
         Toastify({
-            text: `Connection with PlaceVegan server got terminated: ${e.reason}`,
+            text: `Connection with SgapPlace server got terminated: ${e.reason}`,
             duration: 10000
         }).showToast();
         console.error('Socketfout: ', e.reason);
