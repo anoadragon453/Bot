@@ -1,7 +1,5 @@
 # Sgap Bot
 
-## Installatieinstructies
-
 ## Installation
 
 Make sure you have a pixel available otherwise it will fuck up!
