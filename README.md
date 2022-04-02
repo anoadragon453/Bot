@@ -2,7 +2,7 @@
 
 ## Installation
 
-Make sure you have a pixel available otherwise it will fuck up!
+Make sure you have a pixel available otherwise it may have issues!
 
 1. Install [Tampermonkey](https://www.tampermonkey.net/)
 2. Click here: [https://github.com/Squarific/Bot/raw/master/sgapplace.
@@ -13,7 +13,9 @@ Make sure you have a pixel available otherwise it will fuck up!
 
 ### Disadvantages of this bot
 
-- When the bot places a pixel, it looks to yourself as if you can still place a pixel, when the bot has already done this for you (so you are in the 5 minute cooldown). The cooldown is therefore displayed at the top right of your screen.
+- When the bot places a pixel, it looks to yourself as if you can still place a pixel,
+  when the bot has already done this for you (so you are in the 5 minute cooldown). The
+  cooldown is therefore displayed at the top right of your screen.
 
 ## Headless bot
 
