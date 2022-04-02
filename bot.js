@@ -126,11 +126,11 @@ async function attemptPlace() {
     const rgbaCanvas = [].concat(map0.data, map1.data);
 
     for (const i of order) {
-        // negeer lege order pixels.
+        // ignore empty order pixels.
         if (rgbaOrder[(i * 4) + 3] === 0) continue;
 
         const hex = rgbToHex(rgbaOrder[(i * 4)], rgbaOrder[(i * 4) + 1], rgbaOrder[(i * 4) + 2]);
-        // Deze pixel klopt.
+        // This pixel is correct.
         if (hex === rgbToHex(rgbaCanvas[(i * 4)], rgbaCanvas[(i * 4) + 1], rgbaCanvas[(i * 4) + 2])) continue;
 
         const x = i % 2000;
