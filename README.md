@@ -44,9 +44,9 @@ await getAccessToken()
 2. Download the bot from [this link](https://github.com/anoadragon453/Bot/archive/refs/heads/master.zip).
 4. Extract the bot to a folder somewhere on your computer.
 5. Open a command prompt/terminal in this folder
-    Windows: Shift + Right mouse button in the folder -> Click on "Open Powershell here"
-    Mac: Really no idea. Sorry!
-    Linux: Not really necessary, right?
+    * Windows: Shift + Right mouse button in the folder -> Click on "Open Powershell here"
+    * Mac: Really no idea. Sorry!
+    * Linux: Right-click in your file manager, look for "Open terminal here"
 6. Install the necessary dependencies with `npm i`
-7. For the bot out with `node bot.js ACCESS_TOKEN_HERE`
+7. Start the bot out with `node bot.js ACCESS_TOKEN_HERE`
 8. BONUS: You can do the last two steps as many times as you want for additional accounts. Make sure you use other accounts otherwise it won't make much sense. 
