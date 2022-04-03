@@ -114,7 +114,7 @@ let getPendingWork = (work, rgbaOrder, rgbaCanvas) => {
 
 function connectSocket() {
     Toastify({
-        text: 'Connecting to David SGaP himself!',
+        text: 'Connecting to David SGaP himself! Using the ashes protocol...',
         duration: DEFAULT_TOAST_DURATION_MS
     }).showToast();
 
