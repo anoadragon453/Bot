@@ -146,7 +146,7 @@ function connectSocket() {
                 currentOrderCtx = await getCanvasFromUrl(`https://sgapplace.chat.horse/maps/${data.data}`, currentOrderCanvas, 0, 0, true);
                 order = getRealWork(currentOrderCtx.getImageData(0, 0, 2000, 2000).data);
                 Toastify({
-                    text: `New map downloaded, ${order.length} pixels in totaal`,
+                    text: `New map downloaded, ${order.length} pixels in total`,
                     duration: DEFAULT_TOAST_DURATION_MS
                 }).showToast();
                 break;
