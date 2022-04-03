@@ -140,13 +140,13 @@ function connectSocket() {
         switch (data.type.toLowerCase()) {
             case 'map':
                 Toastify({
-                    text: `Nieuwe map laden (reden: ${data.reason ? data.reason : 'first time map download'})...`,
+                    text: `New map loaded (reden: ${data.reason ? data.reason : 'first time map download'})...`,
                     duration: DEFAULT_TOAST_DURATION_MS
                 }).showToast();
                 currentOrderCtx = await getCanvasFromUrl(`https://sgapplace.chat.horse/maps/${data.data}`, currentOrderCanvas, 0, 0, true);
                 order = getRealWork(currentOrderCtx.getImageData(0, 0, 2000, 2000).data);
                 Toastify({
-                    text: `Nieuwe map geladen, ${order.length} pixels in totaal`,
+                    text: `New map downloaded, ${order.length} pixels in totaal`,
                     duration: DEFAULT_TOAST_DURATION_MS
                 }).showToast();
                 break;
