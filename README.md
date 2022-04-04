@@ -23,12 +23,11 @@ Make sure you have a pixel available otherwise it may have issues!
 **NOTE: People have reported that this is annoying to do on chrome because teksts get unselected. Therefore we recommend that you use firefox.**
 
 1. Go to [r/place](https://reddit.com/r/place)
-2. Open dev tools and go to the network tab
+2. Open dev tools and go to the application/storage tab
 3. Refresh the page
-4. Click on the first request to reddit.com/r/place (See image)
-![Screenshot_20220403_165251](https://user-images.githubusercontent.com/9784257/161433856-27ef7e7c-7f00-4b37-b274-4199ea919aa9.png)
-5. Go to the tab called `Cookies`
-6. Copy the value of the `reddit_session` cookie
+4. Go to the tab called `Cookies`
+5. Copy the value of the `reddit_session` cookie
+![image](cookie.jpg)
 
 ### Installation instructions
 
@@ -40,7 +39,7 @@ Make sure you have a pixel available otherwise it may have issues!
     
     Mac: No clue, sorry!
     
-    Linux: Is this necessary?
+    Linux: Open your file manager to the file manager, right-click and Open in Terminal
 5. install the dependencies: `npm i`
 6. execute the bot `node bot.js SESSION_COOKIE_HERE`
 7. BONUS: You can repeat these steps for any amount of accounts you'd want. Keep in mind to use different accounts.
