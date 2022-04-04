@@ -19,25 +19,31 @@ Make sure you have a pixel available otherwise it may have issues!
 
 ## Headless bot
 
-### Obtain your access token
-1. Go to [r/place](https://www.reddit.com/r/place/)
-2. Open the browser console (F12/Inspect element -> Click on console)
-3. Paste the following code and press enter:
+### How to get reddit_session cookie
+**NOTE: People have reported that this is annoying to do on chrome because teksts get unselected. Therefore we recommend that you use firefox.**
 
-```js
-async function getAccessToken() {
-	const usingOldReddit = window.location.href.includes('new.reddit.com');
-	const url = usingOldReddit ? 'https://new.reddit.com/r/place/' : 'https://www.reddit.com/r/place/';
-	const response = await fetch(url);
-	const responseText = await response.text();
+1. Go to [r/place](https://reddit.com/r/place)
+2. Open dev tools and go to the network tab
+3. Refresh the page
+4. Click on the first request to reddit.com/r/place (See image)
+![Screenshot_20220403_165251](https://user-images.githubusercontent.com/9784257/161433856-27ef7e7c-7f00-4b37-b274-4199ea919aa9.png)
+5. Go to the tab called `Cookies`
+6. Copy the value of the `reddit_session` cookie
 
-	return responseText.split('\"accessToken\":\"')[1].split('"')[0];
-}
+### Installation instructions
 
-await getAccessToken()
-```
-
-4. The text between the quotes (`"`) is your access token.
+1. Install [NodeJS](https://nodejs.org/).
+2. Download the bot via [this link](https://github.com/PlaceNL/Bot/archive/refs/heads/master.zip).
+3. Extract the bot anywhere on your desktop
+4. Open a command prompt/terminal in this folder
+    Windows: Shift+right mousebutton in the folder -> Click on "open Powershell here"
+    
+    Mac: No clue, sorry!
+    
+    Linux: Is this necessary?
+5. install the dependencies: `npm i`
+6. execute the bot `node bot.js SESSION_COOKIE_HERE`
+7. BONUS: You can repeat these steps for any amount of accounts you'd want. Keep in mind to use different accounts.
 
 ### Installation Instructions
 
