@@ -125,7 +125,7 @@ let getPendingWork = (work, rgbaOrder, rgbaCanvas) => {
     startPlacement();
 
     setInterval(() => {
-        if (socket) socket.send(JSON.stringify({ type: 'ping' }));
+        if (socket && socket.readyState === WebSocket.OPEN) socket.send(JSON.stringify({ type: 'ping' }));
     }, 5000);
     // Refresh de tokens elke 30 minuten. Moet genoeg zijn toch.
     setInterval(refreshTokens, 30 * 60 * 1000);
