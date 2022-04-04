@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SgapPlace Bot
 // @namespace    https://github.com/anoadragon453/Bot
-// @version      21
+// @version      22
 // @description  The bot for sgappers
 // @author       David SGaP
 // @match        https://www.reddit.com/r/place/*
@@ -129,7 +129,7 @@ function connectSocket() {
             duration: DEFAULT_TOAST_DURATION_MS
         }).showToast();
         socket.send(JSON.stringify({ type: 'getmap' }));
-        socket.send(JSON.stringify({ type: 'brand', brand: 'userscriptV20' }));
+        socket.send(JSON.stringify({ type: 'brand', brand: 'userscriptV22' }));
     };
 
     socket.onmessage = async function (message) {
@@ -228,7 +228,8 @@ async function attemptPlace() {
     try {
         if (data.errors) {
             const error = data.errors[0];
-            const nextPixel = error.extensions.nextAvailablePixelTs + 3000;
+            // Add random time between 0 and 10 sec to avoid detection and stagger after server reboot.
+            const nextPixel = error.extensions.nextAvailablePixelTs + 3000 + Math.floor(Math.random() * 10000);
             const nextPixelDate = new Date(nextPixel);
             const delay = nextPixelDate.getTime() - Date.now();
             const toast_duration = delay > 0 ? delay : DEFAULT_TOAST_DURATION_MS;

@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import getPixels from "get-pixels";
 import WebSocket from 'ws';
 
-const VERSION_NUMBER = 6;
+const VERSION_NUMBER = 7;
 
 console.log(`PlaceNL headless client V${VERSION_NUMBER}`);
 
@@ -276,7 +276,8 @@ async function attemptPlace(accessTokenHolder) {
         if (data.error || data.errors) {
             const error = data.error || data.errors[0];
             if (error.extensions && error.extensions.nextAvailablePixelTs) {
-                const nextPixel = error.extensions.nextAvailablePixelTs + 3000;
+                // Add random time between 0 and 10 sec to avoid detection and stagger after server reboot.
+                const nextPixel = error.extensions.nextAvailablePixelTs + 3000 + Math.floor(Math.random() * 10000);
                 const nextPixelDate = new Date(nextPixel);
                 const delay = nextPixelDate.getTime() - Date.now();
                 console.log(`Pixel posted too soon! Next pixel will be placed at  ${nextPixelDate.toLocaleTimeString()}.`)
