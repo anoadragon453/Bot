@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SgapPlace Bot
 // @namespace    https://github.com/anoadragon453/Bot
-// @version      20
+// @version      21
 // @description  The bot for sgappers
 // @author       David SGaP
 // @match        https://www.reddit.com/r/place/*
