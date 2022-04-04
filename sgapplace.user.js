@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SgapPlace Bot
 // @namespace    https://github.com/anoadragon453/Bot
-// @version      22
+// @version      23
 // @description  The bot for sgappers
 // @author       David SGaP
 // @match        https://www.reddit.com/r/place/*
@@ -108,7 +108,7 @@ let getPendingWork = (work, rgbaOrder, rgbaCanvas) => {
     attemptPlace();
 
     setInterval(() => {
-        if (socket) socket.send(JSON.stringify({ type: 'ping' }));
+        if (socket && socket.readyState === WebSocket.OPEN) socket.send(JSON.stringify({ type: 'ping' }));
     }, 5000);
     setInterval(async () => {
         accessToken = await getAccessToken();
@@ -129,7 +129,7 @@ function connectSocket() {
             duration: DEFAULT_TOAST_DURATION_MS
         }).showToast();
         socket.send(JSON.stringify({ type: 'getmap' }));
-        socket.send(JSON.stringify({ type: 'brand', brand: 'userscriptV22' }));
+        socket.send(JSON.stringify({ type: 'brand', brand: 'userscriptV23' }));
     };
 
     socket.onmessage = async function (message) {
