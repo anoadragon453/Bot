@@ -25,7 +25,7 @@ let accessTokenHolders = [];
 let defaultAccessToken;
 
 if (redditSessionCookies.length > 4) {
-    console.warn("Meer dan 4 reddit accounts per IP addres wordt niet geadviseerd!")
+    console.warn("More than 4 reddit accounts per IP address is not recommended !")
 }
 
 var socket;
@@ -268,7 +268,7 @@ async function attemptPlace(accessTokenHolder) {
     const y = Math.floor(i / 2000);
     const hex = rgbaOrderToHex(i, rgbaOrder);
 
-    console.log(`Proberen pixel te plaatsen op ${x}, ${y}... (${percentComplete}% compleet, nog ${workRemaining} over)`);
+    console.log(`Trying to place pixel on ${x}, ${y}... (${percentComplete}% complete, ${workRemaining} left )`);
 
     const res = await place(x, y, COLOR_MAPPINGS[hex], accessTokenHolder.token);
     const data = await res.json();
@@ -283,7 +283,7 @@ async function attemptPlace(accessTokenHolder) {
                 setTimeout(retry, delay);
             } else {
                 const message = error.message || error.reason || 'Unknown error';
-                const guidance = message === 'user is not logged in' ? 'Heb je de "reddit_session" cookie goed gekopieerd?' : '';
+                const guidance = message === 'user is not logged in' ? 'Did you copy the "reddit_session" cookie correctly ?' : '';
                 console.error(`[!!] Kritieke fout: ${message}. ${guidance}`);
                 console.error(`[!!] Los dit op en herstart het script`);
             }
